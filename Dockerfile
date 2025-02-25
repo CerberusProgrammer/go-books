@@ -6,6 +6,7 @@ COPY go.mod ./
 COPY src/ ./src/
 
 RUN go mod download
+RUN go mod tidy
 RUN go build -o go-books ./src/main.go
 
 FROM gcr.io/distroless/base
