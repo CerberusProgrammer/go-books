@@ -25,10 +25,14 @@ func main() {
 	connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		dbHost, dbPort, dbUser, dbPassword, dbName)
 
+	fmt.Println("Connecting to database...")
+	fmt.Println(connStr)
+
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("Connected to database")
 	defer db.Close()
 
 	http.HandleFunc("/", helloWorldHandler)
